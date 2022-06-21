@@ -1,6 +1,9 @@
 # aws-certified-solutions-architect-associated-exam-notes
 
-## technologies
+These notes are intend for quick review in preparation for the AWS. Certified Solutions Architect – Associate
+(SAA-C02) Exam.
+
+## Technologies
 ### Compute
 ### Cost management
 ### Database
