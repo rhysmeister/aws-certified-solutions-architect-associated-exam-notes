@@ -1,6 +1,6 @@
 # aws-certified-solutions-architect-associated-exam-notes
 
-These notes are intend for quick review in preparation for the AWS. Certified Solutions Architect – Associate
+These notes are intend for quick review in preparation for the AWS Certified Solutions Architect – Associate
 (SAA-C02) Exam.
 
 ## Technologies
