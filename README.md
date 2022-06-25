@@ -69,26 +69,26 @@ These notes are intend for quick review in preparation for the AWS Certified Sol
 #### Amazon Elastic Kubernetes Service (Amazon EKS)
 #### Elastic Load Balancing
 * [Amazon Elastic Load Balancing](https://aws.amazon.com/elasticloadbalancing/)
-** Elastic Load Balancing (ELB) automatically distributes incoming application traffic across multiple targets and virtual appliances in one or more Availability Zones (AZs). 
-** Support health checks to detect bad instances.
-** Support TLS Termination.
-** Exports useful metrics to CLoudwatch.
-** Tip: If you expect a sudden huge spike in traffic you may want to ask AWS Support to [pre-warm your LB](https://aws.amazon.com/articles/best-practices-in-evaluating-elastic-load-balancing/#pre-warming)
-** Cross Zone Load Balancing enables you to load balance across multiple AZ. Your load balancer nodes distribute incoming requests evenly across the Availability Zones enabled for your load balancer. Otherwise, each load balancer node distributes requests only to instances in its Availability Zone.
-** Application Load Balancer
-*** Operates at OSI Layer 7.
-*** Best for HTTP and HTTPS applications.
-*** Can intelligently route requests based on request content.
-*** Path patterns allow yo to direct traffic to different EC2 instances based on the URL contained in the request.
-*** Can route traffic to EC2 ASGs, Lambda, Fargate, EKS and ECS.
-** Network Load Balancer
-*** Operates at OSI Layer 4.
-*** TCP & UDP Traffic.
-*** Suited to High Performance used cases, can handle millions of requests per second.
-** [Gateway Load Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/introduction.html)
-** [Classic Load Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/introduction.html)
-*** Operates at both OSI Layer 7 and 4.
-*** Generally not as flexible as an ALB.
+ * Elastic Load Balancing (ELB) automatically distributes incoming application traffic across multiple targets and virtual appliances in one or more Availability Zones (AZs). 
+ * Support health checks to detect bad instances.
+ * Support TLS Termination.
+ * Exports useful metrics to CLoudwatch.
+ * Tip: If you expect a sudden huge spike in traffic you may want to ask AWS Support to [pre-warm your LB](https://aws.amazon.com/articles/best-practices-in-evaluating-elastic-load-balancing/#pre-warming)
+ * Cross Zone Load Balancing enables you to load balance across multiple AZ. Your load balancer nodes distribute incoming requests evenly across the Availability Zones enabled for your load balancer. Otherwise, each load balancer node distributes requests only to instances in its Availability Zone.
+* Application Load Balancer
+ * Operates at OSI Layer 7.
+ * Best for HTTP and HTTPS applications.
+ * Can intelligently route requests based on request content.
+ * Path patterns allow yo to direct traffic to different EC2 instances based on the URL contained in the request.
+ * Can route traffic to EC2 ASGs, Lambda, Fargate, EKS and ECS.
+* Network Load Balancer
+ * Operates at OSI Layer 4.
+ * TCP & UDP Traffic.
+ * Suited to High Performance used cases, can handle millions of requests per second.
+* [Gateway Load Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/introduction.html)
+* [Classic Load Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/introduction.html)
+ * Operates at both OSI Layer 7 and 4.
+ * Generally not as flexible as an ALB.
 #### AWS Fargate
 #### AWS Lambda
 ### Database
@@ -100,16 +100,16 @@ These notes are intend for quick review in preparation for the AWS Certified Sol
 ### Management and Governance
 #### AWS Auto Scaling
 * [Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html)
-** Helps you ensure you always have the desired number of EC2 Instances for your application.
-** Components of Amazon EC2 Auto Scaling
-*** Groups - EC2 Instances organised into a group, we configure a minimum, desired and maximum number of instances,
-*** Configuration Templates - Config for the EC2 instance AMI ID, instance type, key pair, security groups, ebs volume etc.
-*** [Scaling Options](https://docs.aws.amazon.com/autoscaling/ec2/userguide/scale-your-group.html#scaling-options) - We can scale up based on a schedule or in response to a specific condition (dynamic scaling) i.e. High CPU.
-**** Maintain current instance levels at all times.
-**** Scale manually.
-**** Scale based on a schedule.
-**** Scale based on demand.
-**** Use predictive scaling - Uses machine learning and historical data from Cloudwatch to forcast scaling requirements.
+ * Helps you ensure you always have the desired number of EC2 Instances for your application.
+ * Components of Amazon EC2 Auto Scaling
+* Groups - EC2 Instances organised into a group, we configure a minimum, desired and maximum number of instances,
+ * Configuration Templates - Config for the EC2 instance AMI ID, instance type, key pair, security groups, ebs volume etc.
+ * [Scaling Options](https://docs.aws.amazon.com/autoscaling/ec2/userguide/scale-your-group.html#scaling-options) - We can scale up based on a schedule or in response to a specific condition (dynamic scaling) i.e. High CPU.
+  * Maintain current instance levels at all times.
+  * Scale manually.
+  * Scale based on a schedule.
+  * Scale based on demand.
+  * Use predictive scaling - Uses machine learning and historical data from Cloudwatch to forcast scaling requirements.
 #### AWS Backup
 #### AWS CloudFormation
 #### AWS CloudTrail
@@ -135,9 +135,9 @@ These notes are intend for quick review in preparation for the AWS Certified Sol
 #### [Amazon Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html)
 * Amazon Route 53 is a highly available and scalable Domain Name System (DNS) web service. 
 * Use Cases
-** Register domain names.
-** Route internet traffic to the resources for your domain.
-** Check the health of your resources.
+ * Register domain names.
+ * Route internet traffic to the resources for your domain.
+ * Check the health of your resources.
 #### AWS Transit Gateway
 #### Amazon VPC (and associated features)
 ### Security, Identity, and Compliance:
@@ -151,9 +151,9 @@ These notes are intend for quick review in preparation for the AWS Certified Sol
 * Amazon Macie is a fully managed data security and data privacy service that uses machine learning and pattern matching to discover and protect your sensitive data in AWS.
 * Macie automatically provides an inventory of Amazon S3 buckets including a list of unencrypted buckets, publicly accessible buckets, and buckets shared with AWS accounts outside those you have defined in AWS Organizations. Then, Macie applies machine learning and pattern matching techniques to the buckets you select to identify and alert you to sensitive data, such as personally identifiable information (PII).
 * Use cases
-** Assessing your data privacy and security
-** Maintaining regulatory compliance
-** Identifying sensitive data in data migrations
+ * Assessing your data privacy and security
+ * Maintaining regulatory compliance
+ * Identifying sensitive data in data migrations
 
 #### AWS Secrets Manager
 #### AWS Shield
