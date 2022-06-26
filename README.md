@@ -18,13 +18,35 @@ These notes are intend for quick review in preparation for the AWS Certified Sol
 ### Storage
 ## AWS services and features
 ### Analytics
-#### Amazon Athena
+#### [Amazon Athena](https://aws.amazon.com/athena/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)
+* Query and analyze data in S3 using standard SQL.
+* Serverless model.
+* Pay only for the queries you run - $5 per TB of data scanned,
+* You can save from 30% to 90% on your per-query costs and get better performance by compressing, partitioning, and converting your data into columnar formats.
 #### Amazon Elasticsearch Service (Amazon ES)
-#### Amazon EMR
-#### AWS Glue
-#### Amazon Kinesis
+* Elasticsearch as a managed service.
+* [Amazon OpenSearch Service](https://aws.amazon.com/opensearch-service/) is the successor to Amazon Elasticsearch Service
+#### [Amazon EMR](https://aws.amazon.com/emr/)
+* Amazon Elastic Map Reduce.
+* Petabyte-scale data analytics.
+* Run Apache Spak, Hive, Presto and other big data workloads.
+* Runs on EC2 CLuster, Amazon EKS, AWS Outposrs or Amazon EMR Serverless.
+#### [AWS Glue](https://aws.amazon.com/glue/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)
+* Serverless ETL Platform.
+* Provides visual and code-based interfaces.
+#### [Amazon Kinesis](https://aws.amazon.com/kinesis/)
+* Collect, process, and analyze real-time, streaming data.
+* Ungest real-time data such as video, audio, application logs, website clickstreams, and IoT telemetry data.
+* Fully managed, serverless infrastructure.
+* Capabilities
+  * Amazon Kinesis Video - securely stream video from connected devices to AWS for analytics, machine learning (ML,  and other processing.
+  * Amazon Kinesis Data Streams - scalable and durable real-time data streaming service that can continuously capture gigabytes of data per second from hundreds of thousands of sources.
+  * Amazon Kinesis Data Firehose - capture, transform, and load data streams into AWS data stores for near real-time analytics with existing business intelligence tools.
+  * Amazon Kinesis Data Analytics - process data streams in real time with SQL or Apache Flink without having to learn new programming languages or processing frameworks.
 #### Amazon QuickSight
-### AWS Billing and Cost Management:
+* Serverless BI Service.
+* BI Dashboards, querying, data analysis, anomaly detection, what if, forcasting etc.
+### AWS Billing and Cost Management
 #### AWS Budgets
 #### Cost Explorer
 ### Application Integration:
@@ -38,31 +60,38 @@ These notes are intend for quick review in preparation for the AWS Certified Sol
 * Termination protected is turned off by default - Turn on to protect yourself from accidents!
 * The user_data config field can contain bootstrapping code that is executed when your instance first boots up.
 * [EC2 Pricing](https://aws.amazon.com/ec2/pricing/)
-** *On-Demand* - With On-Demand instances, you pay for compute capacity by the hour or the second depending on which instances you run. No longer-term commitments or upfront payments are needed. You can increase or decrease your compute capacity depending on the demands of your application and only pay the specified per hourly rates for the instance you use.
-** *Reserved* - You have a capacity reservation which offers significant discount compared to on-demand, but you are require to have a contact for 1–3 years. Used for applications with steady predictable use. However, you cant move between regions.
-** *Spot instances* - Amazon EC2 Spot instances allow you to request spare Amazon EC2 computing capacity for up to 90% off the On-Demand price.  Recommended for application that require very low compute prices, have flexible start and end times and can cope with being interruped.
+  * *On-Demand* - With On-Demand instances, you pay for compute capacity by the hour or the second depending on which instances you run. No longer-term commitments or upfront payments are needed. You can increase or decrease your compute capacity depending on the demands of your application and only pay the specified per hourly rates for the instance you use.
+  * *Reserved* - You have a capacity reservation which offers significant discount compared to on-demand, but you are require to have a contact for 1–3 years. Used for applications with steady predictable use. However, you cant move between regions.
+  * *Spot instances* - Amazon EC2 Spot instances allow you to request spare Amazon EC2 computing capacity for up to 90% off the On-Demand price.  Recommended for application that require very low compute prices, have flexible start and end times and can cope with being interruped.
 ** *Dedicated Hosts* - Exactly what is says - a dedicate hosts, used only by you. Can be good for situations involving restrictive software licenses, i.e. an Oracle server where specific CPUs must be licensed.
 * [Security Groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html)
-** A virtual firewall for you EC2 Instances.
-** By default, all inbound traffic blocked, all outbound traffic allowed.
-** Stateful - if traffic is allowed in, outbound traffic for that request is allowed automatically.
-** You can attach more then one SG to an EC2 instance.
+  * A virtual firewall for you EC2 Instances.
+  * By default, all inbound traffic blocked, all outbound traffic allowed.
+  * Stateful - if traffic is allowed in, outbound traffic for that request is allowed automatically.
+  * You can attach more then one SG to an EC2 instance.
 * [EC2 Hibernate](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html)
-** Put instance to sleep and return the to the same point when required.
-** Contents of RAM needs to be saved to the root EBS volume, so must have space to do this.
-** Works with General Purpose SSD (gp2 and gp3) and Provisioned IOPS SSD (io1 and io2).
-** Root EBS volume must be encrypted.
-** Useful for instances running services that take a long time to start up.
-** Any data on the instance store is lost when an instance is hibernated.
-** Can't hibernate > 60 days. Workaround -> start the instance again and re-hibernate.
+  * Put instance to sleep and return the to the same point when required.
+  * Contents of RAM needs to be saved to the root EBS volume, so must have space to do this.
+  * Works with General Purpose SSD (gp2 and gp3) and Provisioned IOPS SSD (io1 and io2).
+  * Root EBS volume must be encrypted.
+  * Useful for instances running services that take a long time to start up.
+  * Any data on the instance store is lost when an instance is hibernated.
+  * Can't hibernate > 60 days. Workaround -> start the instance again and re-hibernate.
 * [EC2 Placement Groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
-** How EC2 instances are located on the underlying hardware.
-*** Cluster - Place  instances in a single AZ. Good for low-latency network/HPC applications that require fast node-to-node connections.
-*** Partition - Spread instances across logical partitions that do not share the same hardware as other partitions. Good for large distributed/replicated applications i.e. Cassandra, Hadoop and Kafka.
-*** Spread - Spread a small group of instances across the underlying hardware.
-*** There is no charge for creating a placement group.
-*** 500 placement groups can be created in each region.
-*** You cannot launch Dedicated Hosts in placement groups.
+  * How EC2 instances are located on the underlying hardware.
+    * Cluster - Place  instances in a single AZ. Good for low-latency network/HPC applications that require fast node-to-node connections.
+    * Partition - Spread instances across logical partitions that do not share the same hardware as other partitions. Good for large distributed/replicated applications i.e. Cassandra, Hadoop and Kafka.
+    * Spread - Spread a small group of instances across the underlying hardware.
+    * There is no charge for creating a placement group.
+    * 500 placement groups can be created in each region.
+    * You cannot launch Dedicated Hosts in placement groups.
+* [EC2 Instance Store](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html)
+  * Temporary block-level storage for your instance.
+  * Located on disks that are physically attached to the host computer.
+  * Îdeal for temp storagem i.e. buffers, caches, scratch data, or for data that is replicated across a fleet of instances, such as a load-balanced pool of web servers.
+  * Data is lost when...
+    * The underlying disk drive fails.
+    * The instance stops, hibernates or terminates.
 
 #### AWS Elastic Beanstalk
 #### Amazon Elastic Container Service (Amazon ECS)
@@ -75,13 +104,13 @@ These notes are intend for quick review in preparation for the AWS Certified Sol
 * Exports useful metrics to CLoudwatch.
 * Tip: If you expect a sudden huge spike in traffic you may want to ask AWS Support to [pre-warm your LB](https://aws.amazon.com/articles/best-practices-in-evaluating-elastic-load-balancing/#pre-warming)
 * Cross Zone Load Balancing enables you to load balance across multiple AZ. Your load balancer nodes distribute incoming requests evenly across the Availability Zones enabled for your load balancer. Otherwise, each load balancer node distributes requests only to instances in its Availability Zone.
-* Application Load Balancer
+* [Application Load Balancer](https://aws.amazon.com/elasticloadbalancing/application-load-balancer/)
   * Operates at OSI Layer 7.
   * Best for HTTP and HTTPS applications.
   * Can intelligently route requests based on request content.
   * Path patterns allow yo to direct traffic to different EC2 instances based on the URL contained in the request.
   * Can route traffic to EC2 ASGs, Lambda, Fargate, EKS and ECS.
-* Network Load Balancer
+* [Network Load Balancer](https://aws.amazon.com/elasticloadbalancing/network-load-balancer/)
   * Operates at OSI Layer 4.
   * TCP & UDP Traffic.
   * Suited to High Performance used cases, can handle millions of requests per second.
