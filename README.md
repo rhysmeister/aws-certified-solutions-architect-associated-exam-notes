@@ -51,7 +51,31 @@ These notes are intend for quick review in preparation for the AWS Certified Sol
 #### Cost Explorer
 ### Application Integration:
 #### Amazon Simple Notification Service (Amazon SNS)
+* [Simple Notification Service](https://aws.amazon.com/sns/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)
+* Fully managed messaging service that allows push notifications, SMS messages or email.
+* Allows for many-to-many messaging between distributed systems.
+* Can group recipients through topics.
+* Highly available as all messages stored across multiple regions.
+* PUSH based delivery.
+* Pay as you go, no up front costs.
 #### Amazon Simple Queue Service (Amazon SQS)
+* [Simple Queue Service](https://aws.amazon.com/sqs/)
+* Fully Managed Queue Service.
+* Decouple applications, reduce system complexity with managing and operating message-oriented architectures.
+* 2 Types of queues:
+  * Standard
+    * Default queue type.
+    * Nearly unlimited API calls per second.
+    * Guarantees message delivery AT LEAST once - can be more and occasionally out of order.
+  * FIFO
+    * First in, First out.
+    * High Throughtput, up to 3K transaction per API batch call.
+    * Processed once only, no duplicates.
+    * Order is respected.
+* Pull based, i.e. an application needs to pull the messages from the queue.
+* *Visibility Timeout* - the amount of time the message is invisible in the queue after reader picks it up. It prevents other consumers from receiving and processing the same message. The message is then deleted. If the job hasn’t completed it becomes visible in the queue again (can be max 12 hours).
+* If you are getting messages delivered twice, the cause could be your visibility timeout is too low. i.e. The application processing the messages takes a while.
+* *Short Polling* — Keeps polling queue looking for work, even if it’s empty. You can introduce long polling as a way of reducing costs. [Amazon SQS short and long polling](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-short-and-long-polling.html)
 ### Compute
 #### Amazon EC2
 * Amazon's Virtual Machine Platform.
@@ -183,18 +207,62 @@ These notes are intend for quick review in preparation for the AWS Certified Sol
   * Assessing your data privacy and security
   * Maintaining regulatory compliance
   * Identifying sensitive data in data migrations
-
 #### AWS Secrets Manager
 #### AWS Shield
 #### AWS Single Sign-On
-#### AWS WAF
+#### [AWS WAF](https://aws.amazon.com/waf/)
+* Web Application Firewall.
+* Proects your wbe app or api against common web exploits.
+* Create rules that can block common attacks, i.e. SQL injection or cross-site scripting.
+* Monitor http & https requests sent to Cloudfront,, LBs or API Gateway.
+* WAF Conditions - what we might want to allow or block requests on.
+  * Request header values.
+  * Country of request origin.
+  * IP Address.
+  * Strings that appear in requests.
+  * Request length.
+  * Presence of SQL code.
+  * Presence of a script.
+* Pay for what you use - based on number of rules & requests.
 ### Storage
 #### Amazon Elastic Block Store (Amazon EBS)
+* [Amazon EBS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html)
+* Block level storage volumes for use with EC2 instances.
+* Automatically replicated with an AZ.
+* Volumes can only be mounted to instances within the same AZ.
+* Snapshots - point in time copies, stores in S3, can be restored in new regions, snapshots are incremental.
+* When snapshotting root device — best practice to terminate it first (Ensure volumes is not set to be destroyed with instance).
+* If a volume is encrypted then the snapshots are encrypted too.
+* Volume Types
+  * General Purpose SSD volumes (gp2 and gp3
+    * Balanced price and performance.
+    * Ideal for boot volumes, medium sized single-instance dbs, dev and test instances.
+  * Provisioned IOPS SSD volumes (io1 and io2)
+    *  I/O-intensive workloads.
+    * IOPS rate specified when creating the volume.
+  * Throughput Optimized HDD volumes (st1)
+    * Low-cost magnetic storage that defines performance in terms of throughput rather than IOPS.
+    * Ideal for large, sequential workloads such as Amazon EMR, ETL, data warehouses, and log processing.
+  * Cold HDD volumes (sc1)
+    * Low-cost magnetic storage that defines performance in terms of throughput rather than IOPS.
+    * These volumes are ideal for large, sequential, cold-data workloads.
+* Performance metrics, such as bandwidth, throughput, latency, and average queue length, are available through the AWS Management. 
 #### Amazon Elastic File System (Amazon EFS)
-#### Amazon FSx
-#### Amazon S3
-#### Amazon S3 Glacier
-#### AWS Storage Gateway
+* [Amazon EFS](https://aws.amazon.com/efs/)
+* Managed NFS version 4 (NFSv4).
+* Can be mounted on an EC2 instance.
+* Data stored acorss multiple AZs.
+* Native to Unix & Linux, but not supported on Windows instances.
+#### [Amazon FSx](https://aws.amazon.com/fsx/)
+* Choice of 4 widely-used file systems:
+  * Netapp ONTAP - run workloads based on NFS/SMB/iSCSI.
+  * OpenZFS - run workloads on Linux, machine learning or application iwth high-IOPS storage requirements. Clone application data in seconds with ZFS SNapshots.
+  * Windows File Server - Use for Windows Application, i.e. Sharepoint.
+  * Lustre - Use for high performance computing, machine learning and big data analytics.
+#### [Amazon S3](https://aws.amazon.com/s3/?nc1=h_ls)
+#### [Amazon S3 Glacier](https://docs.aws.amazon.com/amazonglacier/latest/dev/introduction.html)
+#### [AWS Storage Gateway](https://aws.amazon.com/storagegateway/)
+* Enable on-premise access to almost unlimited cloud storage.
 
 # Further Reading
 
