@@ -184,6 +184,9 @@ These notes are intend for quick review in preparation for the AWS Certified Sol
 #### Amazon API Gateway
 #### Amazon CloudFront
 #### AWS Direct Connect
+* Dedicated private connection from on-prem to AWS VPC Network.
+* 1GB to 100GB/s network bandwidth.
+* Can take day or weeks to organise.
 #### AWS Global Accelerator
 #### [Amazon Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html)
 * Amazon Route 53 is a highly available and scalable Domain Name System (DNS) web service. 
@@ -197,6 +200,8 @@ These notes are intend for quick review in preparation for the AWS Certified Sol
 #### AWS Certificate Manager (ACM)
 #### AWS Directory Service
 #### Amazon GuardDuty
+* Read VPC Flow Logs, DNS Logs, and CloudTrail events.
+* Apply ML algorithms and anomaly detections to discover threats.
 #### AWS Identity and Access Management (IAM)
 #### Amazon Inspector
 #### AWS Key Management Service (AWS KMS)
@@ -207,13 +212,25 @@ These notes are intend for quick review in preparation for the AWS Certified Sol
   * Assessing your data privacy and security
   * Maintaining regulatory compliance
   * Identifying sensitive data in data migrations
-#### AWS Secrets Manager
-#### AWS Shield
+#### [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/)
+* Protect and manage secrets needed by your applications and services.
+* Rotate Amazon RDS, Redhsift and DocumentDB credentials automatically.
+* Fine-grained paccess policies with IAM.
+* Replicate secrets across regions.
+* [Pricing](https://aws.amazon.com/secrets-manager/pricing/)
+  * $0.40 per secret, per month.
+  * $0.05 per 10K API calls. 
+#### [AWS Shield](https://aws.amazon.com/shield/)
+* Managed DDoS protection.
+* Protect against layer 3 & 4 attacks (Network and Transport).
+* 2 Offerings
+  * Standard - automatic and free DDoS protection service for all AWS customers for CloudFront and Route 53 resources.
+  * Advanced - paid service for enhanced DDoS protection for EC2, ELB, CloudFront, and Route 53 resources
 #### AWS Single Sign-On
 #### [AWS WAF](https://aws.amazon.com/waf/)
 * Web Application Firewall.
 * Proects your wbe app or api against common web exploits.
-* Create rules that can block common attacks, i.e. SQL injection or cross-site scripting.
+* Create rules that can block common attacks, i.e. SQL injection or cross-site scripting (Layer 7,application).
 * Monitor http & https requests sent to Cloudfront,, LBs or API Gateway.
 * WAF Conditions - what we might want to allow or block requests on.
   * Request header values.
@@ -224,6 +241,7 @@ These notes are intend for quick review in preparation for the AWS Certified Sol
   * Presence of SQL code.
   * Presence of a script.
 * Pay for what you use - based on number of rules & requests.
+* You can deploy WAF on CloudFront, Application Load Balancer, API Gateway and AWS AppSync
 ### Storage
 #### Amazon Elastic Block Store (Amazon EBS)
 * [Amazon EBS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html)
@@ -264,9 +282,10 @@ These notes are intend for quick review in preparation for the AWS Certified Sol
 #### [AWS Storage Gateway](https://aws.amazon.com/storagegateway/)
 * Enable on-premise access to almost unlimited cloud storage.
 
-# Further Reading
+# Further Reading / References
 
 * [OSI Model - Wikipedia](https://en.wikipedia.org/wiki/OSI_model)
 * [What is the OSI Model](https://www.imperva.com/learn/application-security/osi-model/)
 * [ELB vs. ALB vs. NLB: Choosing the Best AWS Load Balancer for Your Needs](https://iamondemand.com/blog/elb-vs-alb-vs-nlb-choosing-the-best-aws-load-balancer-for-your-needs/)
 * [Routing traffic to an ELB load balancer](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer.html)
+* [AWS SSA Exam Notes](https://codingnconcepts.com/aws/aws-saa-exam-notes)
