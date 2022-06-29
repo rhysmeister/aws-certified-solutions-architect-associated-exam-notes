@@ -347,19 +347,73 @@ These notes are intend for quick review in preparation for the AWS Certified Sol
   * [Patch Manager](https://aws.amazon.com/systems-manager/features/#Patch_Manager) - Manage the rollout of Operating System patches.
   * [Many More](https://aws.amazon.com/systems-manager/features/)
 
-#### AWS Trusted Advisor
+#### [AWS Trusted Advisor](https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html)
+
+* Draws on best practices gleaned from thousands of AWS customer.
+* Inspects your AWS environment and provides suggestions for:
+  * Cost reductions
+  * Improve System availability
+  * Performance
+  * Security gaps
+* Plans
+  * Basic/Developer Support Plan - All service limits category checks and six checks in the security category.
+  * Business, Enterprise On-Ramp or Enterprise Support Plan - All Trusted Advisor checks.
 
 ### Migration and Transfer
 
-#### AWS Database Migration Service (AWS DMS)
+#### [AWS Database Migration Service (AWS DMS)](https://aws.amazon.com/dms/)
 
-#### AWS DataSync
+* Migrate database to AWS quickly and securely.
+* On-Prem -> AWS, AWS -> On-Prem, AWS -> AWS.
+* Data can be streamed in near real-time to the destination, no downtime on the sourse.
+* Need to use the [Schema Conversion Tool (SCT)](https://aws.amazon.com/dms/schema-conversion-tool/) for hetrogenous migration.
+
+#### [AWS DataSync](https://docs.aws.amazon.com/datasync/latest/userguide/what-is-datasync.html)
 
 #### AWS Migration Hub
 
-#### AWS Server Migration Service (AWS SMS)
+* Automates data migrations between systems.
+* Support multiple source and destination types:
+  * NFS
+  * SMB file servers.
+  * HDFS
+  * S3
+  * Amazon EFS
+  * Amazon FSx
+  * AWS Snowcone devices
+* Use cases:
+  * Data migration
+  * Archiving
+  * Data protecition
 
-#### AWS Snowball
+#### [AWS Server Migration Service (AWS SMS)](https://docs.aws.amazon.com/server-migration-service/latest/userguide/server-migration.html)
+
+* Migrates VMware VSphere, MS HYperV and Azure VMs to the AWS Cloud.
+* Incrementally replicates server VMs as a AMI ready for deployment.
+* Benefits:
+  * Simplify Cloud Migrations
+  * Orchestrate Migrations
+  * Incremental testing
+  * Supports Windows as well as Linux
+  * Minimize downtime
+* Limitations:
+  * 50 concurrent migration per account (can request an increase).
+  * 90 days replication limit per vm (can request an increase).
+  * 50 concurrent application migrations per account, 10 groups and 50 servers in each application.
+* No additional fees for SMS, we pay standard fees for S3 buckets, EBC volumes, data transfer and EC2 instances.
+
+#### [AWS Snowball](https://aws.amazon.com/snowball/)
+
+* Migrate terrabytes or petabytes of data into the cloud.
+* Snowball devices supply storage and compute power.
+* [Snowball Edge Device Specifications](https://docs.aws.amazon.com/snowball/latest/developer-guide/specifications.html)
+
+|Family Member|Storage|RAM|Migration Type|DataSync|Migration Size|
+|-------------|-------|---|--------------|--------|--------------|
+|Snowcone	    |8TB|4GB|online & offline|yes|GBs and TBs|
+|Snowball Edge Storage Optimized|80TB|80GB|offline|no|petabyte scale|
+|Snowball Edge Compute Optimized|42TB|208GB|offline|no|petabyte scale|
+|Snowmobile|100PB|N/A|offline|no|exabyte scale|
 
 #### AWS Transfer Family
 
